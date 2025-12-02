@@ -1,5 +1,7 @@
-arc_calc: arc_calc.cpp
-    g++ -o arc_calc arc_calc.cpp -lm
+# Makefile для тригонометрического калькулятора
+
+calculator: calculator.cpp
+	g++ -o calculator calculator.cpp -lm
 
 clean:
-    rm -f arc_calc *.o
+	rm -f calculator *.o
