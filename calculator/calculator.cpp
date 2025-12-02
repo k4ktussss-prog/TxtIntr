@@ -17,9 +17,9 @@ int main(int argc, char* argv[]) {
         cout << "Тригонометрический калькулятор (арксинус и арккосинус)" << endl;
         cout << "======================================================" << endl;
         cout << "Использование:" << endl;
-        cout << "  arc_calc -o arcsin -m degrees 0.5 0.707 0.866" << endl;
-        cout << "  arc_calc -o arccos -m radians 0.5 0.0 -0.5" << endl;
-        cout << "  arc_calc -o arcsin -m degrees 0.2 0.4 0.6 0.8 0.9" << endl;
+        cout << "  calculator -o arcsin -m degrees 0.5 0.707 0.866" << endl;
+        cout << "  calculator -o arccos -m radians 0.5 0.0 -0.5" << endl;
+        cout << "  calculator -o arcsin -m degrees 0.2 0.4 0.6 0.8 0.9" << endl;
         cout << endl;
         cout << "Операции:" << endl;
         cout << "  arcsin  - арксинус (обратный синус)" << endl;
@@ -37,8 +37,8 @@ int main(int argc, char* argv[]) {
     // Проверяем базовые условия
     if (argc < 6 || string(argv[1]) != "-o" || string(argv[3]) != "-m") {
         cout << "Ошибка: неправильный формат команды!" << endl;
-        cout << "Используйте: arc_calc -o операция -m режим число1 число2 число3 ..." << endl;
-        cout << "Пример: arc_calc -o arcsin -m degrees 0.5 0.707 0.866" << endl;
+        cout << "Используйте: calculator -o операция -m режим число1 число2 число3 ..." << endl;
+        cout << "Пример: calculator -o arcsin -m degrees 0.5 0.707 0.866" << endl;
         return 1;
     }
 
@@ -112,7 +112,6 @@ int main(int argc, char* argv[]) {
     for (int i = 0; i < num_count; i++) {
         double value = arguments[i];
         double result = 0.0;
-        bool calculation_error = false;
         
         try {
             if (operation == "arcsin") {
@@ -135,14 +134,11 @@ int main(int argc, char* argv[]) {
         }
         catch (const exception& e) {
             cout << "Ошибка вычисления для аргумента " << value << ": " << e.what() << endl;
-            calculation_error = true;
         }
     }
     
-    if (!calculation_error) {
-        cout << "======================================================" << endl;
-        cout << "Все вычисления завершены успешно!" << endl;
-    }
+    cout << "======================================================" << endl;
+    cout << "Все вычисления завершены!" << endl;
 
     return 0;
 }
